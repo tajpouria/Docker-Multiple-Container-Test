@@ -1,4 +1,3 @@
--   use key map for env variables to get REDIS_HOST and REDIS_PORT
--   create worker dir to calculate fibonacci seq
--   set redisClient retry_strategy and duplicate
--   set the subscription on message to HSET fib to values hast and message field !!
+## Description
+
+A quick project related to this [ REPO ](https://github.com/tajpouria/Docker-And-Kubernetes-Series) `Docker multiple container`.
