@@ -10,14 +10,21 @@ services:
     redis:
         image: redis:latest
     postgres:
-        image: postgres:latest
+        restart: "always"
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./postgres
+        environment:
+            - "FILLA_DB_USER=docker"
+            - "FILLA_DB_PASSWORD=postgres_password"
+            - "FILLA_DB_DATABASE=multi_docker"
     worker:
         build:
             dockerfile: Dockerfile.dev
             context: ./worker
         volumes:
             - /usr/app/node_modules
-            - .:/usr/app
+            - ./worker:/usr/app
         environment:
             - REDIS_HOST=redis
             - REDIS_PORT=6379
@@ -27,11 +34,13 @@ services:
             context: ./api
         volumes:
             - /usr/app/node_modules
-            - .:/usr/app
+            - ./api:/usr/app
         environment:
             - SERVER_PORT=5000
             - PG_HOST=postgres
             - PG_PORT=5432
-            - PG_USERNAME=postgres
+            - PG_USERNAME=docker
             - PG_PASSWORD=postgres_password
-            - PG_DATABASE=docker_multi_container
+            - PG_DATABASE=multi_docker
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
