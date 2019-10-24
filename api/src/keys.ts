@@ -4,5 +4,7 @@ export const keys = {
     port: process.env.PG_PORT,
     username: process.env.PG_USERNAME,
     password: process.env.PG_PASSWORD,
-    database: process.env.PG_DATABASE
+    database: process.env.PG_DATABASE,
+    redisHost: process.env.REDIS_HOST,
+    redisPort: process.env.REDIS_PORT
 };
