@@ -1,0 +1,19 @@
+sudo: required
+services:
+    - docker
+before_install:
+    - docker build -t tajpouria/react-app -f ./client/Dockerfile.dev ./client
+script:
+    - docker run tajpouria/react-app npm run test -- --coverage
+after_success:
+    - docker build -t tajpouria/multi-nginx ./nginx
+    - docker build -t tajpouria/multi-postgres ./postgres
+    - docker build -t tajpouria/multi-worker ./worker
+    - docker build -t tajpouria/multi-api ./api
+    - docker build -t tajpouria/multi-client ./client
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push tajpouria/multi-nginx
+    - docker push tajpouria/multi-postgres
+    - docker push tajpouria/multi-worker
+    - docker push tajpouria/multi-api
+    - docker push tajpouria/multi-client
