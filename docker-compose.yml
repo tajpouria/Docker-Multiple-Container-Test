@@ -44,3 +44,10 @@ services:
             - PG_DATABASE=multi_docker
             - REDIS_HOST=redis
             - REDIS_PORT=6379
+    client:
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./client
+        volumes:
+            - /usr/app/node_modules
+            - ./client:/usr/app
