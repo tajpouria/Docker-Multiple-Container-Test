@@ -1,3 +1,3 @@
 it("renders without crashing", () => {});
 
-afterAll(() => setTimeout(() => process.exit(), 1000));
+afterAll(() => setTimeout(() => process.exit(0), 1000));
