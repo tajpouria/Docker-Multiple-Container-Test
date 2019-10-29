@@ -16,4 +16,4 @@ after_success:
     - docker push tajpouria/multi-postgres
     - docker push tajpouria/multi-worker
     - docker push tajpouria/multi-api
-    - docker push tajpouria/multi-client
+    - docker push tajpouria/multi-client:v2
