@@ -13,7 +13,7 @@ after_success:
     - docker build -t tajpouria/multi-client:v2 ./client
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push tajpouria/multi-nginx
-    - docker push tajpouria/multi-postgres
+    - docker push tajpouria/multi-postgres:v2
     - docker push tajpouria/multi-worker
     - docker push tajpouria/multi-api
     - docker push tajpouria/multi-client
