@@ -10,13 +10,13 @@ after_success:
   - docker build -t tajpouria/multi-postgres ./postgres
   - docker build -t tajpouria/multi-worker ./worker
   - docker build -t tajpouria/multi-api ./api
-  - docker build -t tajpouria/multi-client:v3 ./client
+  - docker build -t tajpouria/multi-client:v3.0.1 ./client
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push tajpouria/multi-nginx
   - docker push tajpouria/multi-postgres
   - docker push tajpouria/multi-worker
   - docker push tajpouria/multi-api
-  - docker push tajpouria/multi-client:v3
+  - docker push tajpouria/multi-client:v3.0.1
 branches:
   except:
     - k8s
