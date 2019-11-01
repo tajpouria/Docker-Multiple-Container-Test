@@ -25,3 +25,13 @@ spec:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
               subPath: postgres
+          env:
+            - name: FILLA_DB_USER
+              value: k8s
+            - name: FILLA_DB_DATABASE
+              value: multi_k8s
+            - name: FILLA_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD

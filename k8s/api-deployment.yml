@@ -17,3 +17,23 @@ spec:
           image: tajpouria/multi-api
           ports:
             - containerPort: 5000
+          env:
+            - name: SERVER_PORT
+              value: "5000"
+            - name: PG_HOST
+              value: postgres-cluster-ip-server
+            - name: PG_PORT
+              value: "5432"
+            - name: PG_USERNAME
+              value: k8s
+            - name: PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
+            - name: PG_DATABASE
+              value: multi-k8s
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: "6379"
