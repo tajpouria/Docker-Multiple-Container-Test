@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-deployment
+  name: api-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      component: web
+      component: api
   template:
     metadata:
       labels:
-        component: web
+        component: api
     spec:
       containers:
-        - name: client
-          image: tajpouria/multi-client:v3.0.1
+        - name: api
+          image: tajpouria/multi-api
           ports:
-            - containerPort: 3000
+            - containerPort: 5000
